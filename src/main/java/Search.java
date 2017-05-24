@@ -18,12 +18,14 @@ import java.util.Random;
 public class Search {
 
     String key;
+    String saveKey;
     long time;
     MongoCollection mongoCollection;
-    public void searchAvByKeyWord(String keyWord){
-        key = keyWord;
+    public void searchAvByKeyWord(String searchKey,String saveKey){
+        key = searchKey;
+        this.saveKey = saveKey;
         time = System.currentTimeMillis();
-        String url = Constants.SEARCH_HOST +Constants.SEARCH_API + keyWord+"";
+        String url = Constants.SEARCH_HOST +Constants.SEARCH_API + searchKey+"";
         MongoDatabase database =  MongoDBUtil.instance.getDB(Constants.DB_NAME);
         mongoCollection =  database.getCollection(Constants.TABLE_MOVIE_BOX);
         if(mongoCollection==null)
@@ -162,7 +164,7 @@ public class Search {
     public void insertMovieBox(MovieBox box){
         org.bson.Document doc = new org.bson.Document();
         doc.put("link_url",box.getLinkUrl());
-        doc.put("keyWord",key);
+        doc.put("keyWord",saveKey);
         doc.put("thumb",box.getThumb());
         doc.put("movie_name",box.getMovieName());
         doc.put("code",box.getCode());

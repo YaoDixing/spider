@@ -3,10 +3,10 @@
  */
 public class Run {
     public static void main(String[] args){
-//        Search search = new Search();
-//        search.searchAvByKeyWord("lxvs");
+        Search search = new Search();
+        search.searchAvByKeyWord("","");
 
-        SaveMovieDetail saveMovieDetail = new SaveMovieDetail();
-        saveMovieDetail.getMovieBoxFromDb("lxvs");
+//        SaveMovieDetail saveMovieDetail = new SaveMovieDetail();
+//        saveMovieDetail.getMovieBoxFromDb("lxvs");
     }
 }
